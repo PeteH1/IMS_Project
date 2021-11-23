@@ -68,14 +68,6 @@ Add additional notes about how to deploy this on a live system
 
 * [Maven](https://maven.apache.org/) - Dependency Management
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning.
-
-## Authors
-
-* **Chris Perrins** - *Initial work* - [christophperrins](https://github.com/christophperrins)
-
 ## License
 
 This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md) file for details 
