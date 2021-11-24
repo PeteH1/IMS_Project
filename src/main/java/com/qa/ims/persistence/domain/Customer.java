@@ -43,9 +43,9 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "id:" + id + " first name:" + firstName + " surname:" + surname;
-	}	
-	
+		return " ID: " + id + "   First name: " + firstName + "   Surname: " + surname;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
