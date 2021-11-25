@@ -36,22 +36,6 @@ public class OrderDAO implements Dao<Order> {
 	public List<Order> readAll() {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM orders");) {
-			List<Order> orders = new ArrayList<>();
-			while (resultSet.next()) {
-				orders.add(modelFromResultSet(resultSet));
-			}
-			return orders;
-		} catch (SQLException e) {
-			LOGGER.debug(e);
-			LOGGER.error(e.getMessage());
-		}
-		return new ArrayList<>();
-	}
-
-	public List<Order> readAllWithCost() {
-		try (Connection connection = DBUtils.getInstance().getConnection();
-				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery(
 						"SELECT o.id, o.customer_id, SUM(i.value * oi.quantity) AS total_cost FROM orders o JOIN orders_items oi ON o.id=oi.order_id JOIN items i ON oi.item_id=i.id GROUP BY o.id");) {
 			List<Order> orders = new ArrayList<>();
@@ -64,22 +48,6 @@ public class OrderDAO implements Dao<Order> {
 			LOGGER.error(e.getMessage());
 		}
 		return new ArrayList<>();
-	}
-
-	public Order readWithCost(Long id) {
-		try (Connection connection = DBUtils.getInstance().getConnection();
-				PreparedStatement statement = connection.prepareStatement(
-						"SELECT o.id, o.customer_id, SUM(i.value * oi.quantity) AS total_cost FROM orders o JOIN orders_items oi ON o.id=oi.order_id JOIN items i ON oi.item_id=i.id WHERE o.id = ?");) {
-			statement.setLong(1, id);
-			try (ResultSet resultSet = statement.executeQuery();) {
-				resultSet.next();
-				return modelWithCost(resultSet);
-			}
-		} catch (Exception e) {
-			LOGGER.debug(e);
-			LOGGER.error(e.getMessage());
-		}
-		return null;
 	}
 
 	public Order readLatest() {
@@ -98,11 +66,12 @@ public class OrderDAO implements Dao<Order> {
 	@Override
 	public Order read(Long id) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
-				PreparedStatement statement = connection.prepareStatement("SELECT * FROM orders WHERE id = ?");) {
+				PreparedStatement statement = connection.prepareStatement(
+						"SELECT o.id, o.customer_id, SUM(i.value * oi.quantity) AS total_cost FROM orders o JOIN orders_items oi ON o.id=oi.order_id JOIN items i ON oi.item_id=i.id WHERE o.id = ?");) {
 			statement.setLong(1, id);
 			try (ResultSet resultSet = statement.executeQuery();) {
 				resultSet.next();
-				return modelFromResultSet(resultSet);
+				return modelWithCost(resultSet);
 			}
 		} catch (Exception e) {
 			LOGGER.debug(e);
