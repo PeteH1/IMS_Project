@@ -50,12 +50,12 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", customerId=" + customerId + "]";
+		return "Order [id=" + id + ", customerId=" + customerId + ", totalCost=" + totalCost + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(customerId, id);
+		return Objects.hash(customerId, id, totalCost);
 	}
 
 	@Override
@@ -67,7 +67,8 @@ public class Order {
 		if (getClass() != obj.getClass())
 			return false;
 		Order other = (Order) obj;
-		return Objects.equals(customerId, other.customerId) && Objects.equals(id, other.id);
+		return Objects.equals(customerId, other.customerId) && Objects.equals(id, other.id)
+				&& totalCost == other.totalCost;
 	}
 
 }

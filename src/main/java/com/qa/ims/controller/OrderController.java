@@ -33,15 +33,23 @@ public class OrderController implements CrudController<Order> {
 	public List<Order> readAll() {
 		boolean flag = true;
 		while (flag) {
-			LOGGER.info("Would you like to:\n Press 1) View all orders\n Press 2) Press 3) View items in an order");
+			LOGGER.info(
+					"Would you like to:\n Press 1) View all orders\n Press 2) View a specific order\n Press 3) View items in an order");
 			int input = utils.getInt();
 			if (input == 1) {
-				List<Order> orders = orderDAO.readAll();
+				List<Order> orders = orderDAO.readAllWithCost();
 				for (Order order : orders) {
 					LOGGER.info(order);
 				}
 				return orders;
 			} else if (input == 2) {
+				LOGGER.info("Please enter the id of the order you would like to view");
+				Long orderId = utils.getLong();
+				List<Order> singleOrder = new ArrayList<>();
+				singleOrder.add(orderDAO.readWithCost(orderId));
+				LOGGER.info(singleOrder);
+				return singleOrder;
+			} else if (input == 3) {
 				LOGGER.info("Please enter the id of the order you would like to view items for");
 				Long orderId = utils.getLong();
 				List<OrdersItems> ordersItems = ordersItemsDAO.readAll(orderId);
