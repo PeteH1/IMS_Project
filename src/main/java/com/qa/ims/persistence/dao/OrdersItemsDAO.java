@@ -16,7 +16,7 @@ import com.qa.ims.utils.DBUtils;
 
 public class OrdersItemsDAO implements Dao<OrdersItems> {
 
-	/* This class only needs to add & remove rows from orders_items table */
+	/* This class only needs to read, add & remove rows from orders_items table */
 
 	public static final Logger LOGGER = LogManager.getLogger();
 
