@@ -1,89 +1,17 @@
-Coverage: 34%
-# Project Title
 
-One Paragraph of project description goes here
+<h1>IMS Project</h1>
 
-## Getting Started
+<h3>Welcome to my Inventory Management System (IMS) Project.</h3>
+This project is a culmination of things that I've learned over the previous weeks/months including: Java, Git, Jira, SQL & MySQL, Maven, JUnit & Mockito.
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+You can view the Jira board that was used to manage this project here: https://petehutchison.atlassian.net/jira/software/projects/IP/boards/2
 
-### Prerequisites
+## How to use
 
-What things you need to install the software and how to install them
+You can run and test this application from within [Eclipse](https://www.eclipse.org/downloads/packages/) by importing the project as an existing Maven project. You can right click on the project within Eclipse's package explorer and select "Run As" -> "Java Application". You can also run the tests by right clicking on the project and selecting "Coverage As" -> "JUnit Test".
 
-```
-Give examples
-```
+You will need to have [MySQL](https://www.mysql.com/downloads/) installed, and the schema needed for the application to function correctly can be found in src/main/resources.
 
-### Installing
+You can also run the application from the command line if you have [Java](https://www.oracle.com/java/technologies/downloads/) installed correctly with the correct path variables added. To do this on windows, open a command prompt within the project and enter "java -jar ims-0.0.1-jar-with-dependencies.jar".
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system. Break down into which tests and what they do
-
-### Unit Tests 
-
-Explain what these tests test, why and how to run them
-
-```
-Give an example
-```
-
-### Integration Tests 
-Explain what these tests test, why and how to run them
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Maven](https://maven.apache.org/) - Dependency Management
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning.
-
-## Authors
-
-* **Chris Perrins** - *Initial work* - [christophperrins](https://github.com/christophperrins)
-
-## License
-
-This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md) file for details 
-
-*For help in [Choosing a license](https://choosealicense.com/)*
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+You can run all the tests in a similar way by entering "mvn test" instead.
