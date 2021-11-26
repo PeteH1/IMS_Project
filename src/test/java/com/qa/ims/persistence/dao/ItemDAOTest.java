@@ -28,6 +28,11 @@ public class ItemDAOTest {
 	}
 
 	@Test
+	public void testCreateFail() {
+		assertEquals(null, DAO.create(null));
+	}
+
+	@Test
 	public void testReadAll() {
 		List<Item> expected = new ArrayList<>();
 		expected.add(new Item(1L, "Test item", 100));
@@ -46,9 +51,19 @@ public class ItemDAOTest {
 	}
 
 	@Test
+	public void testReadFail() {
+		assertEquals(null, DAO.read(null));
+	}
+
+	@Test
 	public void testUpdate() {
 		final Item updated = new Item(1L, "item 2", 50);
 		assertEquals(updated, DAO.update(updated));
+	}
+
+	@Test
+	public void testUpdateFail() {
+		assertEquals(null, DAO.update(null));
 	}
 
 	@Test

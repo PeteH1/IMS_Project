@@ -40,9 +40,19 @@ public class OrderDAOTest {
 	}
 
 	@Test
+	public void testReadFail() {
+		assertEquals(null, DAO.read(null));
+	}
+
+	@Test
 	public void testCreate() {
 		final Order created = new Order(2L, 1L);
 		assertEquals(created, DAO.create(created));
+	}
+
+	@Test
+	public void testCreateFail() {
+		assertEquals(null, DAO.create(null));
 	}
 
 	@Test

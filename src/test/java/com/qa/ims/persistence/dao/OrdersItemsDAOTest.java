@@ -28,10 +28,21 @@ public class OrdersItemsDAOTest {
 	}
 
 	@Test
+	public void testCreateFail() {
+		assertEquals(null, DAO.create(null));
+	}
+
+	@Test
 	public void testReadAll() {
 		List<OrdersItems> expected = new ArrayList<>();
 		expected.add(new OrdersItems(1L, 1L, 1L, 100));
 		assertEquals(expected, DAO.readAll(1L));
+	}
+
+	@Test
+	public void testReadAllFail() {
+		List<OrdersItems> expected = new ArrayList<>();
+		assertEquals(expected, DAO.readAll(null));
 	}
 
 	@Test
